@@ -1,3 +1,3 @@
-# Practica-Logica-de-Programacion-Allura
+# Practica-Logica-de-Programacion-Alura
 
-Prácticas del curso de Lógica de Programación de Allura
+Prácticas del curso de Lógica de Programación de Alura

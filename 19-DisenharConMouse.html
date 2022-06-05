@@ -9,7 +9,6 @@
 
     var puedoDibujar = false;
 
-    //Variables para dibujar la paleta
     var xRojo = 0;
     var xVerde  = 50;
     var xAzul = 100;
@@ -25,54 +24,43 @@
             pincel.beginPath();
             pincel.arc(x, y, 5, 0, 2 * 3.14);
             pincel.fill();
-
         }
     }
 
-    //Función para dibujar cada uno de los cuadrados de la paleta
     function dibujarCuadrado(x, y, tamanho, color) {
 
         pincel.fillStyle = color;
         pincel.fillRect(x, y, tamanho, tamanho)
         pincel.fill();
-
     }
 
-    //Función para dibujar la paleta de colores
     function dibujarPaletaColores() {
 
         dibujarCuadrado(xRojo, yCuadrados, tamanhoCuadrados, 'red');
         dibujarCuadrado(xVerde, yCuadrados, tamanhoCuadrados, 'green');
         dibujarCuadrado(xAzul, yCuadrados, tamanhoCuadrados, 'blue');
-
     }
 
     function habilitarDibujar() {
 
         puedoDibujar = true;
-
     }
 
     function deshabilitarDibujar() {
 
         puedoDibujar = false;
-
     }
 
-    //Función para delimitar el área
     function puedeDisenharArea(xCoordenada,yCoordenada){
 
         if ((xCoordenada >= 0 && xCoordenada < (3*tamanhoCuadrados+5)) && 
             (yCoordenada >=0 && yCoordenada < (tamanhoCuadrados+5))) {
 
             return false;
-
         } else{
 
             return true;
-
         }
-
     }    
 
     function capturarMovimientoDelMouse(evento){
@@ -83,9 +71,7 @@
         if (puedeDisenharArea(x,y)){
 
                 dibujarCirculo(x,y,colorActual);
-
         }
-
     }
 
     function seleccionarColor(evento) {
@@ -93,9 +79,6 @@
         var x = evento.pageX - pantalla.offsetLeft;
         var y = evento.pageY - pantalla.offsetTop;
 
-        //Cada condición altera el color de la variable colorActual
-
-        //Comenzamos por la condición del eje Y que es común para todas
         if (y > yCuadrados && y < (yCuadrados + tamanhoCuadrados)) {
 
             if(x > xRojo && x < (xRojo + tamanhoCuadrados)) {
@@ -110,13 +93,8 @@
             } else if(x > xAzul && x < (xAzul + tamanhoCuadrados)) {
 
                 colorActual = "blue";
-
-            }            
-
-
+            }           
         }
-
-
     }
 
     pantalla.onmousemove = capturarMovimientoDelMouse;

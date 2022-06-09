@@ -1,7 +1,10 @@
-body{
-    background: #CCCCCC;
+body {
 }
 
+.principal {
+    background: #CCCCCC;
+    padding: 20px;
+}
 #banner{
     width:100%;
 }
@@ -22,6 +25,26 @@ em strong{
     font-size: 20px;
 }
 
-.items{
+.diferenciales {
+    background: #FFFFFF;
+    padding: 30px;
+}
+
+h2 {
+    text-align: center;
+}
+
+ul {
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+    margin-right: 15%;
+}
+
+.items {
     font-style: italic;
+}
+
+.imagenDiferenciales {
+    width: 50%;
 }

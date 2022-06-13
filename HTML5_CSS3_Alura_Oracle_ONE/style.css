@@ -1,15 +1,17 @@
-body {
+.titulo-principal{
+    padding-left: 30px;
 }
 
-.principal {
-    background: #CCCCCC;
-    padding: 20px;
-}
 #banner{
     width:100%;
 }
 
-h1{
+.principal{
+    background: #CCCCCC;
+    padding: 20px;
+}
+
+.titulo-centralizado{
     text-align: center;
 }
 
@@ -18,33 +20,30 @@ p{
 }
 
 em strong{
-    color: red;
+    color:red;
 }
 
 #mision{
     font-size: 20px;
 }
 
-.diferenciales {
+.diferenciales{
     background: #FFFFFF;
     padding: 30px;
 }
 
-h2 {
-    text-align: center;
+.items{
+    font-style: italic;
 }
 
-ul {
+ul{
     display: inline-block;
     vertical-align: top;
     width: 20%;
     margin-right: 15%;
 }
 
-.items {
-    font-style: italic;
-}
-
-.imagenDiferenciales {
+.imagenDiferenciales{
     width: 50%;
 }
+

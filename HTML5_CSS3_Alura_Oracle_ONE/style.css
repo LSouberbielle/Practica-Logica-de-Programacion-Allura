@@ -173,7 +173,6 @@ td, th{
     clear:left;
 }
 
-
 .principal p{
     margin: 0 0 1em;
 }
@@ -232,11 +231,21 @@ td, th{
     line-height: 1.5;
 }
 
+.items:before{
+    content: "✭";
+}
+
 .items:first-child{
     font-weight: bold;
 }
 .imagen-diferenciales{
     width: 60%;
+    transition: 400ms;
+    box-shadow: 10px 10px 30px black;
+}
+
+.imagen-diferenciales:hover{
+    opacity: 0.8;
 }
 
 .video{

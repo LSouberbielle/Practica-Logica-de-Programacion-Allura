@@ -8,7 +8,7 @@ botonAdicionar.addEventListener("click", function(event){
     var nombre = form.nombre.value;
     var peso = form.peso.value;
     var altura = form.altura.value;
-    var gordura = form.gordura.value;
+    var grasa = form.grasa.value;
 
     var tabla = document.querySelector("#tabla-pacientes");
 
@@ -16,18 +16,18 @@ botonAdicionar.addEventListener("click", function(event){
     var nombreTd = document.createElement("td");
     var pesoTd = document.createElement("td");
     var alturaTd = document.createElement("td");
-    var gorduraTd = document.createElement("td");
+    var grasaTd = document.createElement("td");
     var imcTd = document.createElement("td");
 
     nombreTd.textContent = nombre;
     pesoTd.textContent = peso;
     alturaTd.textContent = altura;
-    gorduraTd.textContent = gordura;
+    grasaTd.textContent = grasa;
     
     pacienteTr.appendChild(nombreTd);
     pacienteTr.appendChild(pesoTd);
     pacienteTr.appendChild(alturaTd);
-    pacienteTr.appendChild(gorduraTd);
+    pacienteTr.appendChild(grasaTd);
 
     tabla.appendChild(pacienteTr);
 });

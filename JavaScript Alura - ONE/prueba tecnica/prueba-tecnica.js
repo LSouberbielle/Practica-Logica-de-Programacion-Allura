@@ -1,16 +1,19 @@
 //Inicializamos las palabras claves como un array, el programa podría incluir la opción de que el usuario cargue sus propias keywords.
-var keywords = ['a','aa','aaa']; 
+var keywords = ['a','aa','aaa'];
+
+var ifContiene;
 
 //Capturamos la palabra que deseamos filtrar a través de un input asociado a un botón.
 var botonFiltrar = document.querySelector("#filtrar-palabra");
 
-botonFiltrar.addEventListener("click",function(event){ //Evento asociado al botón.
+//Evento asociado al botón.
+botonFiltrar.addEventListener("click",function(event){
     event.preventDefault();
     
     //Captamos el formulario y la palabra ingresada.
     var form = document.querySelector("#word-form") 
     var word = document.querySelector("#ingresar-palabra").value + ""; 
-
+    leerPalabra(word);
     var wordTr = construirTr(word);
 
     var error = validarPalabra(word);
@@ -24,6 +27,7 @@ botonFiltrar.addEventListener("click",function(event){ //Evento asociado al bot�
     //Captamos la tabla y agregamos Tr y Td a la misma.
     var tabla = document.querySelector("#tabla-palabras"); 
     tabla.appendChild(wordTr);
+    
     form.reset();
    
 });
@@ -38,7 +42,7 @@ function construirTr(word){
 //Función que asigna el Td al Tr.
 function construirTd(word){
     var td = document.createElement("td");
-    td.textContent = word + " contiene las palabras claves " + "filtrado";
+    td.textContent = word + ifContiene + "filtrado";
     return td;
 }
 
@@ -52,8 +56,17 @@ function validarPalabra(word){
     return error;
 }
 
-//var form = document.querySelector("#form-adicionar"); 
-
+function leerPalabra(word){
+    var keywordsInWord = word.includes(keywords);
+    if (keywordsInWord == true){
+        console.log("Ahi tenes las keywords pa contratame");
+        ifContiene == " contiene las palabras claves ";
+    }
+    else{
+        console.log("no contiene palabras clave.")
+        ifContiene == " no contiene palabras clave.";
+    }
+}
 
 
 /*

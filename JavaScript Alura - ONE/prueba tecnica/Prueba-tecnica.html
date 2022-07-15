@@ -9,16 +9,25 @@
     </head>
 	<body>
         <header>
-			<div class="container">
+			<div>
 				<h1 class="titulo">Prueba técnica Cintelink</h1>
 			</div>
 		</header>
         <main>
-            <form id="form-adicionar">
+            <form id="word-form">
                 <label for="ingresar-palabra"></label>
                 <input type="text" name="filtro" id="ingresar-palabra" placeholder="Ingrese una palabra">
                 <button id="filtrar-palabra" class="boton bto-principal">Buscar palabras claves</button>
             </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Palabras clave en la palabra ingresada</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-palabras">
+                </tbody>
+            </table>
         </main>
 
         <footer>

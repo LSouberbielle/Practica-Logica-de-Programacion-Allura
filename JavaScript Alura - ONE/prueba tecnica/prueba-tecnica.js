@@ -4,16 +4,25 @@ var keywords = ['a','aa','aaa'];
 //Capturamos la palabra que deseamos filtrar a través de un input asociado a un botón.
 var botonFiltrar = document.querySelector("#filtrar-palabra");
 
-botonFiltrar.addEventListener("click",function(event){
+botonFiltrar.addEventListener("click",function(event){ //Evento asociado al botón.
     event.preventDefault();
+    
+    //Captamos el formulario y la palabra ingresada.
+    var form = document.querySelector("#word-form") 
+    var word = document.querySelector("#ingresar-palabra").value + ""; 
 
-    var form = document.querySelector("#word-form")
-    var word = document.querySelector("#ingresar-palabra").value + "";
     var wordTr = construirTr(word);
 
     var error = validarPalabra(word);
     
-    var tabla = document.querySelector("#tabla-palabras");
+    //Si el array de errores no está vacío se lanza un alert con los errores ocasionados y no se imprime la celda.
+    if(error.length > 0){
+        alert(error);
+        return;
+    }
+
+    //Captamos la tabla y agregamos Tr y Td a la misma.
+    var tabla = document.querySelector("#tabla-palabras"); 
     tabla.appendChild(wordTr);
     form.reset();
    
@@ -33,15 +42,14 @@ function construirTd(word){
     return td;
 }
 
+//Función para validar que en el formulario sea obligatorio ingresar al menos un caracter.
 function validarPalabra(word){
     var error = []
 
     if(word.length == 0){
         error.push("Introduzca una palabra para continuar");
     }
-
     return error;
-
 }
 
 //var form = document.querySelector("#form-adicionar"); 

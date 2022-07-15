@@ -1,10 +1,7 @@
-//Inicializamos las palabras claves como un array, el programa podría incluir la opción de que el usuario cargue sus propias keywords.
-var keywords = ['a','aa','aaa'];
-
-var ifContiene;
-
 //Capturamos la palabra que deseamos filtrar a través de un input asociado a un botón.
 var botonFiltrar = document.querySelector("#filtrar-palabra");
+
+var keywordList = [];
 
 //Evento asociado al botón.
 botonFiltrar.addEventListener("click",function(event){
@@ -12,8 +9,10 @@ botonFiltrar.addEventListener("click",function(event){
     
     //Captamos el formulario y la palabra ingresada.
     var form = document.querySelector("#word-form") 
-    var word = document.querySelector("#ingresar-palabra").value + ""; 
-    leerPalabra(word);
+    var word = document.querySelector("#word").value.toString();
+    var keywords = document.querySelector("#keywords").value.toString();
+    var keywordList = keywords.split(" ");
+
     var wordTr = construirTr(word);
 
     var error = validarPalabra(word);
@@ -24,10 +23,12 @@ botonFiltrar.addEventListener("click",function(event){
         return;
     }
 
+    filtrado(word, keywordList);
+    console.log(word, keywords, keywordList);
     //Captamos la tabla y agregamos Tr y Td a la misma.
     var tabla = document.querySelector("#tabla-palabras"); 
     tabla.appendChild(wordTr);
-    
+   
     form.reset();
    
 });
@@ -40,9 +41,9 @@ function construirTr(word){
 }
 
 //Función que asigna el Td al Tr.
-function construirTd(word){
+function construirTd(word, text, keyword){
     var td = document.createElement("td");
-    td.textContent = word + ifContiene + "filtrado";
+    td.textContent = word + text + keyword;
     return td;
 }
 
@@ -56,42 +57,28 @@ function validarPalabra(word){
     return error;
 }
 
-function leerPalabra(word){
-    var keywordsInWord = word.includes(keywords);
-    if (keywordsInWord == true){
-        console.log("Ahi tenes las keywords pa contratame");
-        ifContiene == " contiene las palabras claves ";
+function leerPalabra(keyword){
+    var ifContiene = false;
+    if (word.toString().includes(keyword.toString())){
+        ifContiene = true;
+        return ifContiene;
     }
     else{
-        console.log("no contiene palabras clave.")
-        ifContiene == " no contiene palabras clave.";
+        return ifContiene;
     }
 }
 
-
-/*
-var campoFiltro = document.querySelector("#filtrar-tabla");
-
-campoFiltro.addEventListener("input",function(){
-    var pacientes = document.querySelectorAll(".paciente");
-
-    if(this.value.length > 0){
-        for (var i = 0; i < pacientes.length ; i++){
-            var paciente = pacientes[i];
-            var tdNombre = paciente.querySelector(".info-nombre");
-            var nombre = tdNombre.textContent;
-            var expresion = new RegExp(this.value,"i");
-            if(!expresion.test(nombre)){
-                paciente.classList.add("invisible");
-            }else{
-                paciente.classList.remove("invisible");
-            }   
+function filtrado(word, keywordList){
+    keywordList.forEach(keyword => {
+        if(leerPalabra(keyword)){
+        
+            //keywordList.push(keyword);
+            word.replace(keyword,"");
+            construirTd(word," contiene la palabras clave ", keyword)
+            
         }
-    }else{
-        for (var i = 0; i < pacientes.length ; i++){
-            var paciente = pacientes[i];
-            paciente.classList.remove("invisible");
+        else{
+            construirTd(word," no contiene la palabra ", keyword)
         }    
-    } 
-});
-*/
+    });
+}

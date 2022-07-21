@@ -6,6 +6,7 @@ botonAdicionar.addEventListener("click",function(event){
     var form = document.querySelector("#form-adicionar"); 
     var paciente = capturarDatosPaciente(form);
     
+    
     var errores = validarPaciente(paciente);
 
     if(errores.length > 0){
@@ -13,7 +14,7 @@ botonAdicionar.addEventListener("click",function(event){
         return;
     }
 
-
+    adicionarPacienteEnLaTabla(paciente);
     form.reset();
 
     var mensajesErrores = document.querySelector("#mensajes-errores");
@@ -26,6 +27,7 @@ function adicionarPacienteEnLaTabla(paciente){
     var tabla = document.querySelector("#tabla-pacientes");
     tabla.appendChild(pacienteTr);
 }
+
 
 function capturarDatosPaciente(form){
     //capturando los datos del formulario
